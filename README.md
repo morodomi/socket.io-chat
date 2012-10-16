@@ -18,3 +18,8 @@ Please fix localhost to your host name
 ```js
 var socket = io.connect('http://localhost');
 ```
+
+##Start
+```bash
+node app.js
+```
