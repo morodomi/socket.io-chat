@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type='text/javascript' src='/socket.io/socket.io.js'></script>
+    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'></script>
+    <script type='text/javascript'>
+        var socket = io.connect('http://localhost');
+        // when the client connected to the server
+        socket.on('connect', function(msg) {
+            $('#connectId').text("Your ID :: " + socket.socket.sessionid);
+        });
+
+        // received message
+        socket.on('message', function(msg) {
+            $('#receiveMsg').append(msg + '<br>');
+        });
+
+        // send message
+        function sendMsg() {
+            var msg = $('#message').val();
+            socket.send(msg);
+        }
+
+        // disconnect
+        function disconnect() {
+            socket.send(socket.socket.sessionid + ' is disconnected.');
+            socket.disconnect();
+        }
+    </script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <div id='connectId'></div>
+    <input type='text' id='message' value=''>
+    <input type='button' value='Send' onclick='sendMsg()'>
+    <input type='button' value='Disconnect' onclick='disconnect()'>
+    <div id='receiveMsg'></div>
+  </body>
+</html>
