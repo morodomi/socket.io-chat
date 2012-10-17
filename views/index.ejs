@@ -14,13 +14,14 @@
 
         // received message
         socket.on('message', function(msg) {
-            $('#receiveMsg').append(msg + '<br>');
+            $('#receive').append(msg + '<br>');
         });
 
         // send message
         function sendMsg() {
             var msg = $('#message').val();
             socket.send(msg);
+            $('#message').val('');
         }
 
         // disconnect
@@ -36,6 +37,6 @@
     <input type='text' id='message' value=''>
     <input type='button' value='Send' onclick='sendMsg()'>
     <input type='button' value='Disconnect' onclick='disconnect()'>
-    <div id='receiveMsg'></div>
+    <div id='receive'></div>
   </body>
 </html>

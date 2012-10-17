@@ -2,7 +2,7 @@
 Masahiro Morodomi &lt;morodomi at gmail.com&gt;
 
 ##Description
-Test Program for Node.js Socket.io with Express and EJS
+Test Program for Node.js, socket.io with Express framework and EJS
 
 ##Installation
 
@@ -13,13 +13,13 @@ npm install -d
 vi views/index.ejs
 ```
 
-Please fix localhost to your host name
+Please fix "http://localhost" to your host name
 
 ```js
 var socket = io.connect('http://localhost');
 ```
 
-##Start
+##Launch
 ```bash
 node app.js
 ```
